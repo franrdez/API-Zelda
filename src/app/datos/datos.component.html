@@ -1,0 +1,34 @@
+<div class="card">
+  <div class="text-center">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/The_Legend_of_Zelda_Breath_of_the_Wild.svg"
+      class="rounded" alt="Zelda Breath of the wild" style="width:200px;height:200px;">
+  </div>
+  <div class="card-body">
+    <h5>Options: </h5>
+
+    <select class="form-select" name="miselect" [(ngModel)]="option">
+      <option [value]="query" *ngFor="let query of queryTypes">{{query}}</option>
+    </select>
+
+    <input class="btn btn-danger" value="Search" (click)="llenarDatos()">
+
+      <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="card" style="width: 18rem; height: fit-content;"
+          *ngFor="let item of data | paginate: { itemsPerPage: 5, currentPage: page}">
+          <div class="card-body">
+            <h5 class="card-title">{{item.name}}</h5>
+            <p class="card-text">{{item.description}}</p>
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <div>
+    <pagination-controls (pageChange)="page = $event" previousLabel="Anterior"
+    nextLabel="Siguiente"></pagination-controls>
+  </div>
+
+
+</div>
