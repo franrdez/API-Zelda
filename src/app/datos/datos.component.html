@@ -1,33 +1,60 @@
-<div class="card">
-  <div class="text-center">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/The_Legend_of_Zelda_Breath_of_the_Wild.svg"
-      class="rounded" alt="Zelda Breath of the wild" style="width:200px;height:200px;">
+<div class="image">
+
+  <mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Zelda API</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>share</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <form>
+    <br><h4 style="color: lawngreen">Elige categoría</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>Categorias Zelda</mat-label>
+      <mat-select [(ngModel)]="option" name="miselect">
+        <mat-option *ngFor="let query of queryTypes" [value]="query">
+          {{query}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <p> Categoria Seleccionada: {{option}} </p>
+  </form>
+
+  <div class="example-button-row">
+    <button mat-fab extended color="primary" value="Search" (click)="llenarDatos()">
+      <mat-icon>favorite</mat-icon>
+      Buscar
+    </button>
   </div>
-  <div class="card-body">
-    <h5>Options: </h5>
 
-    <select class="form-select" name="miselect" [(ngModel)]="option">
-      <option [value]="query" *ngFor="let query of queryTypes">{{query}}</option>
-    </select>
-
-    <input class="btn btn-danger" value="Search" (click)="llenarDatos()">
-
-      <div class="row row-cols-1 row-cols-md-2 g-4">
-        <div class="card" style="width: 18rem; height: fit-content;"
+  <div class="contenedor">
+      <mat-card class="example-card" style="width: 18rem; height: fit-content;"
           *ngFor="let item of data | paginate: { itemsPerPage: 5, currentPage: page}">
-          <div class="card-body">
-            <h5 class="card-title">{{item.name}}</h5>
-            <p class="card-text">{{item.description}}</p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-          </div>
-        </div>
-      </div>
+          <mat-card-header>
+            <mat-card-title>{{item.name}}</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              {{item.description}}
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button>LIKE</button>
+            <button mat-button>SHARE</button>
+          </mat-card-actions>
+        </mat-card>
   </div>
 
-  <div>
-    <pagination-controls (pageChange)="page = $event" previousLabel="Anterior"
-    nextLabel="Siguiente"></pagination-controls>
+  <div class="d-flex justify-content-center">
+      <pagination-controls (pageChange)="page = $event" previousLabel="Anterior"
+      nextLabel="Siguiente"></pagination-controls>
   </div>
 
 

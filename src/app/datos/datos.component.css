@@ -1,0 +1,15 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+.example-card{
+  background-color: aqua;
+}
+
+.contenedor {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+

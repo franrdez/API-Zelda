@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-root',
@@ -6,13 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title = 'API-ZELDA';
 
-  constructor(){}
+  constructor(private spinner: NgxSpinnerService){}
 
   ngOnInit(): void {
-
+    this.spinner.show().then(()=>{
+      setTimeout(() => {
+        this.spinner.hide();
+      }, 5000)
+    })
   }
+
 
 
 

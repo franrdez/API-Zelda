@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.imagen{
+  background-image: url('https://w7.pngwing.com/pngs/160/998/png-transparent-the-legend-of-zelda-the-wind-waker-pixel-art-hyrule-warriors-the-legend-of-zelda-majora-s-mask-rupee-rupee.png');
+  background-repeat: repeat;
+  background-size: 200px;
+  background-attachment: fixed;
+  background-position: 0% 0%;
+}
